@@ -9,3 +9,4 @@ The problem can be solved in several languages. Below are the commands used to r
 | Language | Command |
 | -------- | ------- |
 | C# | `dotnet test` |
+| python | `pytest` |
