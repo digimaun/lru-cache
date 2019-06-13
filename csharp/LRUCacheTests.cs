@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 using LRU;
 
 namespace LRU
@@ -24,9 +25,8 @@ namespace LRU
             Assert.AreEqual("3", cache.Get("3"));     // returns 3
             Assert.AreEqual("4", cache.Get("4"));     // returns 4
 
-            cache.Put("5", "5");                      // evicts key 3
-            Assert.IsNull(cache.Get("3"));            // returns null (not found)
-            Assert.AreEqual("4", cache.Get("4"));     // returns 4
+            var seq = cache.GetKeySequence();
+            Assert.IsTrue(seq.SequenceEqual(new string[] { "4", "3" }));
         }
     }
 }

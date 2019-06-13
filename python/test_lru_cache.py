@@ -18,6 +18,5 @@ def test_lrucache_basic():
     assert "3" == cache.Get("3")   # returns 3
     assert "4" == cache.Get("4")   # returns 4
 
-    cache.Put("5", "5")            # evicts key 3
-    assert cache.Get("3") is None  # returns None (not found)
-    assert "4" == cache.Get("4")   # returns 4
+    sequence = cache.GetKeySequence()
+    assert ["4", "3"] == sequence
